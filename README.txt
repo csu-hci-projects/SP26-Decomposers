@@ -1,3 +1,3 @@
 Youtube Video of Current State:
 PDF of paper:
-Overleaf Latex: https://www.overleaf.com/read/ygqhfszrjkgk#404406
+Overleaf Latex: https://www.overleaf.com/read/cqqhfdmzpyvm#1a31cb 
