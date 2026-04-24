@@ -1,9 +1,7 @@
 using UnityEngine;
-using System.Collections.Generic;
-using System.IO;
 
-public class SimonSays : MonoBehaviour
-{   
+public class SimonSaysLogic : MonoBehaviour
+{
     public List<int> gameRounds = new List<int>();
     public bool allowedInput = false;
     public int currentIndex = 0;
@@ -33,15 +31,14 @@ public class SimonSays : MonoBehaviour
         return
     }
     
-    private static MyManager _instance;
-    public static MyManager instance {
+    private static SimonSaysLogic _instance;
+    public static SimonSaysLogic instance {
         get {
             if(_instance == null)
             {
-                _instance = FindObjectOfType<MyManager>(); //Only ever ran once, no prefromance issue
+                _instance = FindObjectOfType<SimonSaysLogic>(); //Only ever ran once, no prefromance issue
             }
             return _instance;
         }
     }
-
-} 
+}
