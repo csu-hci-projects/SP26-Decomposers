@@ -1,13 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SimonSaysLogic : MonoBehaviour
 {
-    public List<int> gameRounds = new List<int>();
-    public bool allowedInput = false;
-    public int currentIndex = 0;
+    public static List<int> gameRounds = new List<int>();
+    public static bool allowedInput = false;
+    public static int currentIndex = 0;
 
     public static void Start(){
-        Random.seed = 42;
+        Random.InitState(42);
     }
     public static void newRound(){
         gameRounds.Add(Random.Range(0,4));
@@ -17,18 +18,20 @@ public class SimonSaysLogic : MonoBehaviour
     }
 
     public static void doTurn(int button){
-        if (button == gameRounds[currentIndex])
+        if (button == gameRounds[currentIndex]) {
+            var test = 2;
+        }
     }
 
     public static void lightUp(){
-        for(int i = 0; i < gameRounds.length; i++) {
+        for(int i = 0; i < gameRounds.Count; i++) {
             int light = gameRounds[i];
             //light up element
         }
     }
 
     public static void endGame(){
-        return
+        return;
     }
     
     private static SimonSaysLogic _instance;

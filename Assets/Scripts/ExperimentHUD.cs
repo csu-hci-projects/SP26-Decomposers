@@ -103,8 +103,7 @@ public class ExperimentHUD : MonoBehaviour
     }
 
     public void UpdateHUD() {
-        trialLabel.text  = $"Trial: {MyManager.currentTrial} / 6";
-        methodLabel.text = $"Method: {MyManager.instance.GetInteractionMethod()}";
+        return;
     }
 
     // ── Coroutine ──────────────────────────────────────────────────────────
