@@ -29,10 +29,18 @@ public class ButtonLogic : MonoBehaviour
         renderer.material = darkMaterial;
     }
 
-    public IEnumerator press() {
+    public void press(){
+        Debug.Log("AAAAAAAAAAAAAAAA");
+        if(manager.allowedInput){
+            Debug.Log("INPUT ALLOWED");
+            lightUp();
+            manager.doTurn(colorIndex);
+        }
+    }
+    public void lightLong() {
         lightUp();
-        yield return new WaitForSeconds(1);
-        darken();
+        //yield return new WaitForSeconds(2);
+        Invoke("darken", 2f);
     }
 
     // Update is called once per frame
