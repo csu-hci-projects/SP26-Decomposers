@@ -20,11 +20,13 @@ public class ButtonLogic : MonoBehaviour
     }
 
     public void lightUp(){
-        //renderer.material = lightMaterial;
+        Debug.Log("HEYY THE BUTTON IS PRESSED");
+        renderer.material = lightMaterial;
     }
 
     public void darken(){
-        //renderer.material = darkMaterial;
+        Debug.Log("HEYY THE BUTTON IS NOT PRESSED");
+        renderer.material = darkMaterial;
     }
 
     public IEnumerator press() {
