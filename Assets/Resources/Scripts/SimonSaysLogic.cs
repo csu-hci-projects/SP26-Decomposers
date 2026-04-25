@@ -4,38 +4,51 @@ using UnityEngine;
 public class SimonSaysLogic : MonoBehaviour
 {
     public static List<int> gameRounds = new List<int>();
-    public static bool allowedInput = false;
+    public bool allowedInput = true;
     public static int currentIndex = 0;
     public static string[] types = {"redButton", "greenButton", "blueButton", "yellowButton"};
+    public static ButtonLogic[] buttons;
 
-    public static void Start(){
+    public void Start(){
         Random.InitState(42);
+        buttons[0] = GameObject.Find("RedButton").GetComponent<ButtonLogic>();
+        buttons[1] = GameObject.Find("GreenButton").GetComponent<ButtonLogic>();
+        buttons[2] = GameObject.Find("BlueButton").GetComponent<ButtonLogic>();
+        buttons[3] = GameObject.Find("YellowButton").GetComponent<ButtonLogic>();
+        gameRounds.Add(0);
+        gameRounds.Add(1);
+        gameRounds.Add(2);
+        gameRounds.Add(3);
+        newRound();
+        //allowedInput = true;
     }
-    public static void newRound(){
+    public void newRound(){
         gameRounds.Add(Random.Range(0,4));
-        allowedInput = false;
-        lightUp();
-        allowedInput = true;
+        //allowedInput = false;
+        runThroughLights();
+        //allowedInput = true;
     }
 
-    public static void doTurn(int button){
+
+    public void doTurn(int button){
         if (button == gameRounds[currentIndex]) {
-            var test = 2;
+            Debug.Log("YOU WIN!");
+            newRound();
+        } else {
+            Debug.Log("YOU LOSE!");
+            //allowedInput = false;
         }
     }
 
-    public static void lightButton(int index){
-        
-    }
-
-    public static void lightUp(){
+    public void runThroughLights(){
         for(int i = 0; i < gameRounds.Count; i++) {
             int light = gameRounds[i];
+            buttons[light].lightLong();
             //light up element
         }
     }
 
-    public static void endGame(){
+    public void endGame(){
         return;
     }
     
