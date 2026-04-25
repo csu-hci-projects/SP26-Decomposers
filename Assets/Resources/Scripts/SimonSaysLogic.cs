@@ -6,6 +6,7 @@ public class SimonSaysLogic : MonoBehaviour
     public static List<int> gameRounds = new List<int>();
     public static bool allowedInput = false;
     public static int currentIndex = 0;
+    public static string[] types = {"redButton", "greenButton", "blueButton", "yellowButton"};
 
     public static void Start(){
         Random.InitState(42);
@@ -21,6 +22,10 @@ public class SimonSaysLogic : MonoBehaviour
         if (button == gameRounds[currentIndex]) {
             var test = 2;
         }
+    }
+
+    public static void lightButton(int index){
+        
     }
 
     public static void lightUp(){
