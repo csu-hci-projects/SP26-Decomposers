@@ -4,8 +4,8 @@ using System.Collections;
 
 public class AudienceMovement : MonoBehaviour {
 
-    public float bounceHeight = 0.5f;
-    public float bounceSpeed = 2f;
+    public float bounceHeight = 0.2f;
+    public float bounceSpeed = 1.8f;
 
     private Vector3 startPosition;
 
