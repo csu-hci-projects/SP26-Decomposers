@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1031842803519865270}
   - component: {fileID: 2412693942409657954}
   - component: {fileID: 6578863284729273350}
+  - component: {fileID: 949705596215324928}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -107,7 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 0}
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -205,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Filtering.XRPokeFilter
   m_Interactable: {fileID: 0}
-  m_PokeCollider: {fileID: 0}
+  m_PokeCollider: {fileID: 949705596215324928}
   m_PokeConfiguration:
     m_UseConstant: 1
     m_ConstantValue:
@@ -236,7 +238,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -257,3 +259,25 @@ MonoBehaviour:
   colorIndex: 0
   darkMaterial: {fileID: 2100000, guid: b0a4801e700f0f945ba50e6c7c6ff8de, type: 2}
   lightMaterial: {fileID: 2100000, guid: fe7a125e54e010f41b09ab172048ad0d, type: 2}
+--- !u!64 &949705596215324928
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5444025066832435042}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1738784734097079663, guid: cff12d3d5a0847943b0da19baec4d363, type: 3}
