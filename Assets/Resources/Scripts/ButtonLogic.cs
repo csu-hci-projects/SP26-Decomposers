@@ -29,6 +29,10 @@ public class ButtonLogic : MonoBehaviour
         renderer.material = darkMaterial;
     }
 
+    public void test(){
+        manager.runThroughLights();
+    }
+
     public void press(){
         Debug.Log("AAAAAAAAAAAAAAAA");
         if(manager.allowedInput){

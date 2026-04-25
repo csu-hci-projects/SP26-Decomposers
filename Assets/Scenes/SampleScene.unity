@@ -505,6 +505,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5929771676605663042, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: test
+      objectReference: {fileID: 0}
     - target: {fileID: 6578863284729273350, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
       propertyPath: darkMaterial
       value: 
@@ -712,6 +716,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   allowedInput: 0
+  currentIndex: 0
+  lightUpIndex: 0
 --- !u!1 &590969525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,32 +1918,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5929771676605663042, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
-      propertyPath: m_TrackScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929771676605663042, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
-      propertyPath: m_ThrowOnDetach
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929771676605663042, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
-      propertyPath: m_TrackPosition
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929771676605663042, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
-      propertyPath: m_TrackRotation
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929771676605663042, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
-      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929771676605663042, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929771676605663042, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: press
+      value: test
       objectReference: {fileID: 0}
     - target: {fileID: 6578863284729273350, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
       propertyPath: colorIndex

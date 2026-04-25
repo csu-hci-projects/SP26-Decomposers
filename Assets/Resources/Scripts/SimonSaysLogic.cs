@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class SimonSaysLogic : MonoBehaviour
 {
-    public static List<int> gameRounds = new List<int>();
-    public bool allowedInput = true;
-    public static int currentIndex = 0;
+    public List<int> gameRounds = new List<int>();
+    public bool allowedInput = false;
+    public int currentIndex = 0;
+    public int lightUpIndex = 0;
     public static string[] types = {"redButton", "greenButton", "blueButton", "yellowButton"};
     public static ButtonLogic[] buttons;
 
@@ -19,14 +21,13 @@ public class SimonSaysLogic : MonoBehaviour
         gameRounds.Add(1);
         gameRounds.Add(2);
         gameRounds.Add(3);
-        newRound();
-        //allowedInput = true;
+        Invoke("newRound", 5f);
     }
     public void newRound(){
         gameRounds.Add(Random.Range(0,4));
-        //allowedInput = false;
+        allowedInput = false;
         runThroughLights();
-        //allowedInput = true;
+        allowedInput = true;
     }
 
 
@@ -41,9 +42,19 @@ public class SimonSaysLogic : MonoBehaviour
     }
 
     public void runThroughLights(){
+        Debug.Log("RUNNING THROUGH LIGHTS");
+        StartCoroutine(lightHelper());
+    }
+
+    IEnumerator lightHelper(){
+        Debug.Log("LIGHT HELPER");
+        Debug.Log(gameRounds.Count);
         for(int i = 0; i < gameRounds.Count; i++) {
+            Debug.Log(i);
             int light = gameRounds[i];
-            buttons[light].lightLong();
+            buttons[light].lightUp();
+            yield return new WaitForSeconds(2);
+            buttons[light].darken();
             //light up element
         }
     }
