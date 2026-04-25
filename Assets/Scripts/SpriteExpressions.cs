@@ -21,6 +21,3 @@ public class SpriteExpressions : MonoBehaviour {
 
 }
 
-//private Sprite newSprite;
-//newSprite = freakSprites[Random.Range(0, freakSprites.Length)];
-        //gameObject.GetComponent<SpriteRenderer>().sprite = newSprite;
