@@ -4,10 +4,10 @@ using UnityEngine;
 public class SimonSaysLogic : MonoBehaviour
 {
     public static List<int> gameRounds = new List<int>();
-    public bool allowedInput = true;
+    public static bool allowedInput = true;
     public static int currentIndex = 0;
     public static string[] types = {"redButton", "greenButton", "blueButton", "yellowButton"};
-    public static ButtonLogic[] buttons;
+    public static ButtonLogic[] buttons = new ButtonLogic[4];
 
     public void Start(){
         Random.InitState(42);
@@ -57,7 +57,7 @@ public class SimonSaysLogic : MonoBehaviour
         get {
             if(_instance == null)
             {
-                _instance = FindObjectOfType<SimonSaysLogic>(); //Only ever ran once, no prefromance issue
+                _instance = Object.FindFirstObjectByType<SimonSaysLogic>(); //Only ever ran once, no prefromance issue
             }
             return _instance;
         }
