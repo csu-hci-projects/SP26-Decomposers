@@ -56,7 +56,15 @@ public class SimonSaysLogic : MonoBehaviour
 
     IEnumerator lightHelper(){
         allowedInput = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < 4; i++){
+            buttons[i].select();
+        }
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < 4; i++){
+            buttons[i].darken();
+        }
+        yield return new WaitForSeconds(0.5f);
         for(int i = 0; i < gameRounds.Count; i++) {
             Debug.Log(i);
             int light = gameRounds[i];
@@ -67,6 +75,7 @@ public class SimonSaysLogic : MonoBehaviour
         }
         allowedInput = true;
     }
+
 
     public void endGame(){
         return;
