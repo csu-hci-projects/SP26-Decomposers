@@ -11,7 +11,6 @@ public class ButtonLogic : MonoBehaviour
     [SerializeField] public Material lightMaterial;
     SimonSaysLogic manager;
     Renderer renderer;
-    SpriteExpressions spriteExpressions;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,12 +18,6 @@ public class ButtonLogic : MonoBehaviour
         manager = GameObject.Find("SimonSays").GetComponent<SimonSaysLogic>();
         renderer = gameObject.GetComponent<Renderer>();
         //renderer.material = darkMaterial;
-
-    //Sprite expression stuff
-        spriteExpressions = FindObjectOfType<SpriteExpressions>();
-        var interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable>();
-        if (interactable != null)
-            interactable.selectEntered.AddListener(OnGrabbed);
     }
 
     public void lightUp(){
@@ -51,29 +44,8 @@ public class ButtonLogic : MonoBehaviour
     }
     public void lightLong() {
         lightUp();
-        //yield return new WaitForSeconds(2);
         Invoke("darken", 0.5f);
     }
-
-//Correct Clicks for Sprite Expressions
-void OnDestroy(){
-    var interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable>();
-    if (interactable != null)
-        interactable.selectEntered.RemoveListener(OnGrabbed);
-}
-private void OnGrabbed(SelectEnterEventArgs args){
-    if (!manager.allowedInput) 
-        return;
-    bool isCorrect = colorIndex == manager.gameRounds[manager.currentRound];
-    if (isCorrect){
-        spriteExpressions.TriggerPositive();
-    } else {
-        spriteExpressions.TriggerNegative();
-    }
-
-    press();
-}
-
     // Update is called once per frame
     void Update()
     {
