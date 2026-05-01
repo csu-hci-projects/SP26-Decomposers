@@ -27,24 +27,21 @@ public class SimonSaysLogic : MonoBehaviour
     public void newRound(){
         currentIndex = 0;
         gameRounds.Add(Random.Range(0,4));
-        allowedInput = false;
         runThroughLights();
-        allowedInput = true;
         Debug.Log("NEW ROUND  :" + gameRounds[gameRounds.Count - 1]);
     }
 
 
     public void doTurn(int button){
-        Debug.Log(gameRounds[currentIndex]);
+        Debug.Log("BUTTON PRESS: " + gameRounds[currentIndex] + " " + button);
         Debug.Log(button);
         if (button == gameRounds[currentIndex]) {
             Debug.Log("YOU WIN!");
             currentIndex += 1;
         } else {
             Debug.Log("YOU LOSE!");
-            //allowedInput = false;
         }
-        if (currentIndex >= gameRounds.Count - 1){
+        if (currentIndex >= gameRounds.Count){
             newRound();
         }
     }
@@ -55,17 +52,20 @@ public class SimonSaysLogic : MonoBehaviour
     }
 
     IEnumerator lightHelper(){
+        allowedInput = false;
+        yield return new WaitForSeconds(1);
         Debug.Log("LIGHT HELPER");
         Debug.Log(gameRounds.Count);
         for(int i = 0; i < gameRounds.Count; i++) {
             Debug.Log(i);
             int light = gameRounds[i];
             buttons[light].lightUp();
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             buttons[light].darken();
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             //light up element
         }
+        allowedInput = true;
     }
 
     public void endGame(){

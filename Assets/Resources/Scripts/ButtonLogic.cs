@@ -36,6 +36,7 @@ public class ButtonLogic : MonoBehaviour
         if(!manager.started){
             manager.newRound();
             manager.started = true;
+            lightLong();
         }else if(manager.allowedInput){
             Debug.Log("INPUT ALLOWED");
             lightLong();
@@ -45,7 +46,7 @@ public class ButtonLogic : MonoBehaviour
     public void lightLong() {
         lightUp();
         //yield return new WaitForSeconds(2);
-        Invoke("darken", 2f);
+        Invoke("darken", 0.5f);
     }
 
     // Update is called once per frame
