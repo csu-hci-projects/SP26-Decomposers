@@ -32,13 +32,11 @@ public class ButtonLogic : MonoBehaviour
     }
 
     public void press(){
-        Debug.Log("AAAAAAAAAAAAAAAA");
         if(!manager.started){
             manager.newRound();
             manager.started = true;
             lightLong();
         }else if(manager.allowedInput){
-            Debug.Log("INPUT ALLOWED");
             lightLong();
             manager.doTurn(colorIndex);
         }
