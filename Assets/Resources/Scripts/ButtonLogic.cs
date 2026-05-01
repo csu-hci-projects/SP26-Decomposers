@@ -62,9 +62,9 @@ void OnDestroy(){
         interactable.selectEntered.RemoveListener(OnGrabbed);
 }
 private void OnGrabbed(SelectEnterEventArgs args){
-    if (!SimonSaysLogic.allowedInput) 
+    if (!manager.allowedInput) 
         return;
-    bool isCorrect = colorIndex == SimonSaysLogic.gameRounds[SimonSaysLogic.currentIndex];
+    bool isCorrect = colorIndex == manager.gameRounds[manager.currentRound];
     if (isCorrect){
         spriteExpressions.TriggerPositive();
     } else {
