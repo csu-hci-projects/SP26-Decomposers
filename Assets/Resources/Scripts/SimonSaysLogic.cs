@@ -4,63 +4,82 @@ using UnityEngine;
 
 public class SimonSaysLogic : MonoBehaviour
 {
-    public static List<int> gameRounds = new List<int>();
-    public static bool allowedInput = true;
-    public static int currentIndex = 0;
-    public int lightUpIndex = 0;
-    public static string[] types = {"redButton", "greenButton", "blueButton", "yellowButton"};
+    public List<int> gameRounds;
+    public bool started;
+    public bool allowedInput;
+    public int currentRound;
     public static ButtonLogic[] buttons = new ButtonLogic[4];
+    SpriteExpressions spriteExpressions;
+    
 
     public void Start(){
-        Random.InitState(42);
+        //Sprite expression stuff
+        spriteExpressions = FindObjectOfType<SpriteExpressions>();
         buttons[0] = GameObject.Find("RedButton").GetComponent<ButtonLogic>();
         buttons[1] = GameObject.Find("GreenButton").GetComponent<ButtonLogic>();
         buttons[2] = GameObject.Find("BlueButton").GetComponent<ButtonLogic>();
         buttons[3] = GameObject.Find("YellowButton").GetComponent<ButtonLogic>();
-        gameRounds.Add(0);
-        gameRounds.Add(1);
-        gameRounds.Add(2);
-        gameRounds.Add(3);
-        Invoke("newRound", 5f);
-    }
-    public void newRound(){
-        gameRounds.Add(Random.Range(0,4));
-        allowedInput = false;
-        runThroughLights();
-        allowedInput = true;
+        initializeGame(42);
     }
 
+    public void initializeGame(int seed){
+        Random.InitState(seed);
+        gameRounds = new List<int>();
+        started = false;
+        allowedInput = true;
+        currentRound = 0;
+    }
+
+    public void newRound(){
+        currentRound = 0;
+        gameRounds.Add(Random.Range(0,4));
+        runThroughLights();
+    }
 
     public void doTurn(int button){
-        if (button == gameRounds[currentIndex]) {
-            Debug.Log("YOU WIN!");
-            newRound();
+        Debug.Log(button);
+        bool isCorrect = button == gameRounds[currentRound];
+        manageReaction(isCorrect);
+        if (isCorrect) {
+            currentRound += 1;
         } else {
-            Debug.Log("YOU LOSE!");
-            //allowedInput = false;
+            endGame();
+        }
+        if (currentRound >= gameRounds.Count){
+            newRound();
         }
     }
 
     public void runThroughLights(){
-        Debug.Log("RUNNING THROUGH LIGHTS");
         StartCoroutine(lightHelper());
     }
 
     IEnumerator lightHelper(){
-        Debug.Log("LIGHT HELPER");
-        Debug.Log(gameRounds.Count);
+        allowedInput = false;
+        yield return new WaitForSeconds(0.5f);
         for(int i = 0; i < gameRounds.Count; i++) {
             Debug.Log(i);
             int light = gameRounds[i];
             buttons[light].lightUp();
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(0.5f);
             buttons[light].darken();
-            //light up element
+            yield return new WaitForSeconds(0.5f);
         }
+        allowedInput = true;
     }
 
     public void endGame(){
         return;
+    }
+
+    private void manageReaction(bool isCorrect){
+        if (!allowedInput) 
+            return;
+        if (isCorrect){
+            spriteExpressions.TriggerPositive();
+        } else {
+            spriteExpressions.TriggerNegative();
+        }
     }
     
     private static SimonSaysLogic _instance;
