@@ -30,6 +30,7 @@ void Update() {
         }
 }
 
+//Specify Expressions (negative/positive)
 public void TriggerPositive(){
     StartCoroutine(ShowExpression(positiveExpressionIndex));
 }
