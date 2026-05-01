@@ -260,6 +260,7 @@ MonoBehaviour:
   colorIndex: 0
   darkMaterial: {fileID: 2100000, guid: b0a4801e700f0f945ba50e6c7c6ff8de, type: 2}
   lightMaterial: {fileID: 2100000, guid: fe7a125e54e010f41b09ab172048ad0d, type: 2}
+  selectMaterial: {fileID: 2100000, guid: bc95af7f90523a6459db14046765660d, type: 2}
 --- !u!64 &949705596215324928
 MeshCollider:
   m_ObjectHideFlags: 0
