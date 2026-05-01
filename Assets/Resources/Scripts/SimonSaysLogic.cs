@@ -9,7 +9,7 @@ public class SimonSaysLogic : MonoBehaviour
     public int currentIndex = 0;
     public int lightUpIndex = 0;
     public static string[] types = {"redButton", "greenButton", "blueButton", "yellowButton"};
-    public static ButtonLogic[] buttons;
+    public static ButtonLogic[] buttons = new ButtonLogic[4];
 
     public void Start(){
         Random.InitState(42);
@@ -21,7 +21,7 @@ public class SimonSaysLogic : MonoBehaviour
         gameRounds.Add(1);
         gameRounds.Add(2);
         gameRounds.Add(3);
-        Invoke("newRound", 5f);
+        Debug.Log("SUCCESS!!!!!");
     }
     public void newRound(){
         gameRounds.Add(Random.Range(0,4));
