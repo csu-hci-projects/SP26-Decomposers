@@ -9,6 +9,7 @@ public class ButtonLogic : MonoBehaviour
     [SerializeField] public int colorIndex;
     [SerializeField] public Material darkMaterial;
     [SerializeField] public Material lightMaterial;
+    [SerializeField] public Material selectMaterial;
     SimonSaysLogic manager;
     Renderer renderer;
 
@@ -17,7 +18,6 @@ public class ButtonLogic : MonoBehaviour
     {
         manager = GameObject.Find("SimonSays").GetComponent<SimonSaysLogic>();
         renderer = gameObject.GetComponent<Renderer>();
-        //renderer.material = darkMaterial;
     }
 
     public void lightUp(){
@@ -28,15 +28,15 @@ public class ButtonLogic : MonoBehaviour
         renderer.material = darkMaterial;
     }
 
-    public void test(){
-        manager.runThroughLights();
+    public void select(){
+        renderer.material = selectMaterial;
     }
 
     public void press(){
         if(!manager.started){
             manager.newRound();
             manager.started = true;
-            lightLong();
+            selectLong();
         }else if(manager.allowedInput){
             lightLong();
             manager.doTurn(colorIndex);
@@ -44,6 +44,11 @@ public class ButtonLogic : MonoBehaviour
     }
     public void lightLong() {
         lightUp();
+        Invoke("darken", 0.5f);
+    }
+
+    public void selectLong() {
+        select();
         Invoke("darken", 0.5f);
     }
     // Update is called once per frame

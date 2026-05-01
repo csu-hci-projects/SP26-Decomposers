@@ -56,7 +56,7 @@ public class SimonSaysLogic : MonoBehaviour
 
     IEnumerator lightHelper(){
         allowedInput = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1);
         for(int i = 0; i < gameRounds.Count; i++) {
             Debug.Log(i);
             int light = gameRounds[i];
