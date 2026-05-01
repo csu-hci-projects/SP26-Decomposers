@@ -9,9 +9,12 @@ public class SimonSaysLogic : MonoBehaviour
     public bool allowedInput;
     public int currentRound;
     public static ButtonLogic[] buttons = new ButtonLogic[4];
+    SpriteExpressions spriteExpressions;
     
 
     public void Start(){
+        //Sprite expression stuff
+        spriteExpressions = FindObjectOfType<SpriteExpressions>();
         buttons[0] = GameObject.Find("RedButton").GetComponent<ButtonLogic>();
         buttons[1] = GameObject.Find("GreenButton").GetComponent<ButtonLogic>();
         buttons[2] = GameObject.Find("BlueButton").GetComponent<ButtonLogic>();
@@ -35,7 +38,9 @@ public class SimonSaysLogic : MonoBehaviour
 
     public void doTurn(int button){
         Debug.Log(button);
-        if (button == gameRounds[currentRound]) {
+        bool isCorrect = button == gameRounds[currentRound];
+        manageReaction(isCorrect);
+        if (isCorrect) {
             currentRound += 1;
         } else {
             endGame();
@@ -65,6 +70,16 @@ public class SimonSaysLogic : MonoBehaviour
 
     public void endGame(){
         return;
+    }
+
+    private void manageReaction(bool isCorrect){
+        if (!allowedInput) 
+            return;
+        if (isCorrect){
+            spriteExpressions.TriggerPositive();
+        } else {
+            spriteExpressions.TriggerNegative();
+        }
     }
     
     private static SimonSaysLogic _instance;
