@@ -72,7 +72,7 @@ public class SimonSaysLogic : MonoBehaviour
         get {
             if(_instance == null)
             {
-                _instance = FindObjectOfType<SimonSaysLogic>(); //Only ever ran once, no prefromance issue
+                _instance = Object.FindFirstObjectByType<SimonSaysLogic>(); //Only ever ran once, no prefromance issue
             }
             return _instance;
         }

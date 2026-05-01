@@ -1,26 +1,51 @@
 using UnityEngine;
-using TMPro;
 using System.Collections;
 
 public class SpriteExpressions : MonoBehaviour {
 
 
     [SerializeField] Sprite[] freakSprites;
-    private int currentIndex = 0;
+    [SerializeField] int neutralExpressionIndex = 0;
+    [SerializeField] int negativeExpressionIndex = 1;
+    [SerializeField] int positiveExpressionIndex = 2;
     private float timer = 0f;
+    private bool overrideActive = false;
+    private SpriteRenderer sr;
 
 
-    void Update() {
-        timer += Time.deltaTime;
+
+void Start() {
+    sr = GetComponent<SpriteRenderer>();
+    sr.sprite = freakSprites[neutralExpressionIndex];
+}
+
+
+void Update() {
+    if (overrideActive) 
+    return;
+    timer += Time.deltaTime;
         if (timer >= 5f){
             timer = 0f;
-            currentIndex = (currentIndex + 1) % freakSprites.Length;
-            GetComponent<SpriteRenderer>().sprite = freakSprites[currentIndex];
+            sr.sprite = freakSprites[neutralExpressionIndex];
         }
-    }
+}
+
+//Specify Expressions (negative/positive)
+public void TriggerPositive(){
+    StartCoroutine(ShowExpression(positiveExpressionIndex));
+}
+public void TriggerNegative(){
+        StartCoroutine(ShowExpression(negativeExpressionIndex));
+}
+
+
+private IEnumerator ShowExpression(int index){
+    overrideActive = true;
+    sr.sprite = freakSprites[index];
+    yield return new WaitForSeconds(2f);
+    sr.sprite = freakSprites[neutralExpressionIndex];
+    overrideActive = false;
+}
 
 }
 
-//private Sprite newSprite;
-//newSprite = freakSprites[Random.Range(0, freakSprites.Length)];
-        //gameObject.GetComponent<SpriteRenderer>().sprite = newSprite;
