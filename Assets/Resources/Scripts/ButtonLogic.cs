@@ -20,12 +20,10 @@ public class ButtonLogic : MonoBehaviour
     }
 
     public void lightUp(){
-        Debug.Log("HEYY THE BUTTON IS PRESSED");
         renderer.material = lightMaterial;
     }
 
     public void darken(){
-        Debug.Log("HEYY THE BUTTON IS NOT PRESSED");
         renderer.material = darkMaterial;
     }
 
@@ -35,9 +33,12 @@ public class ButtonLogic : MonoBehaviour
 
     public void press(){
         Debug.Log("AAAAAAAAAAAAAAAA");
-        if(manager.allowedInput){
+        if(!manager.started){
+            manager.newRound();
+            manager.started = true;
+        }else if(manager.allowedInput){
             Debug.Log("INPUT ALLOWED");
-            lightUp();
+            lightLong();
             manager.doTurn(colorIndex);
         }
     }

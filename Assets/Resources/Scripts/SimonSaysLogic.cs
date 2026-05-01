@@ -10,6 +10,7 @@ public class SimonSaysLogic : MonoBehaviour
     public int lightUpIndex = 0;
     public static string[] types = {"redButton", "greenButton", "blueButton", "yellowButton"};
     public static ButtonLogic[] buttons = new ButtonLogic[4];
+    public bool started = false;
 
     public void Start(){
         Random.InitState(42);
@@ -24,20 +25,27 @@ public class SimonSaysLogic : MonoBehaviour
         Debug.Log("SUCCESS!!!!!");
     }
     public void newRound(){
+        currentIndex = 0;
         gameRounds.Add(Random.Range(0,4));
         allowedInput = false;
         runThroughLights();
         allowedInput = true;
+        Debug.Log("NEW ROUND  :" + gameRounds[gameRounds.Count - 1]);
     }
 
 
     public void doTurn(int button){
+        Debug.Log(gameRounds[currentIndex]);
+        Debug.Log(button);
         if (button == gameRounds[currentIndex]) {
             Debug.Log("YOU WIN!");
-            newRound();
+            currentIndex += 1;
         } else {
             Debug.Log("YOU LOSE!");
             //allowedInput = false;
+        }
+        if (currentIndex >= gameRounds.Count - 1){
+            newRound();
         }
     }
 
@@ -53,8 +61,9 @@ public class SimonSaysLogic : MonoBehaviour
             Debug.Log(i);
             int light = gameRounds[i];
             buttons[light].lightUp();
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             buttons[light].darken();
+            yield return new WaitForSeconds(1);
             //light up element
         }
     }

@@ -505,10 +505,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5929771676605663042, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: test
-      objectReference: {fileID: 0}
     - target: {fileID: 6578863284729273350, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
       propertyPath: darkMaterial
       value: 
@@ -715,9 +711,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5485a04ff392df41a18d4ef2399476b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  gameRounds: 
   allowedInput: 0
   currentIndex: 0
   lightUpIndex: 0
+  started: 0
 --- !u!1 &590969525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,10 +1914,6 @@ PrefabInstance:
     - target: {fileID: 5686928075497626607, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929771676605663042, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: test
       objectReference: {fileID: 0}
     - target: {fileID: 6578863284729273350, guid: 6b96cccf4a4d73e4baea4c2bfcee0c96, type: 3}
       propertyPath: colorIndex
