@@ -540,7 +540,7 @@ MonoBehaviour:
   started: 0
   allowedInput: 0
   currentRound: 0
-  startSeed: 70
+  startSeed: 99
 --- !u!1 &590969525
 GameObject:
   m_ObjectHideFlags: 0

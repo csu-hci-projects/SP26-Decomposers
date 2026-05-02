@@ -11,6 +11,7 @@ public class SimonSaysLogic : MonoBehaviour
     public int currentRound;
     public static ButtonLogic[] buttons = new ButtonLogic[4];
     SpriteExpressions spriteExpressions;
+    [SerializeField] public int startSeed;
     
     
 
@@ -21,7 +22,7 @@ public class SimonSaysLogic : MonoBehaviour
         buttons[1] = GameObject.Find("GreenButton").GetComponent<ButtonLogic>();
         buttons[2] = GameObject.Find("BlueButton").GetComponent<ButtonLogic>();
         buttons[3] = GameObject.Find("YellowButton").GetComponent<ButtonLogic>();
-        initializeGame(44);
+        initializeGame(startSeed);
     }
 
     public void initializeGame(int seed){
@@ -58,9 +59,16 @@ public class SimonSaysLogic : MonoBehaviour
 
     IEnumerator lightHelper(){
         allowedInput = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
+        for(int i = 0; i < 4; i++) {
+            buttons[i].select();
+        }
+        yield return new WaitForSeconds(0.5f);
+        for(int i = 0; i < 4; i++) {
+            buttons[i].darken();
+        }
+        yield return new WaitForSeconds(0.5f);
         for(int i = 0; i < gameRounds.Count; i++) {
-            Debug.Log(i);
             int light = gameRounds[i];
             buttons[light].lightUp();
             yield return new WaitForSeconds(0.5f);
