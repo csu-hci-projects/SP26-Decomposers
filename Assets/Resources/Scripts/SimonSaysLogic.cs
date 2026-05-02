@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SimonSaysLogic : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class SimonSaysLogic : MonoBehaviour
     public static ButtonLogic[] buttons = new ButtonLogic[4];
     SpriteExpressions spriteExpressions;
     
+    
 
     public void Start(){
         //Sprite expression stuff
@@ -19,7 +21,7 @@ public class SimonSaysLogic : MonoBehaviour
         buttons[1] = GameObject.Find("GreenButton").GetComponent<ButtonLogic>();
         buttons[2] = GameObject.Find("BlueButton").GetComponent<ButtonLogic>();
         buttons[3] = GameObject.Find("YellowButton").GetComponent<ButtonLogic>();
-        initializeGame(42);
+        initializeGame(44);
     }
 
     public void initializeGame(int seed){
@@ -69,6 +71,7 @@ public class SimonSaysLogic : MonoBehaviour
     }
 
     public void endGame(){
+        SceneManager.LoadScene("Menu Room");
         return;
     }
 
