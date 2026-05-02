@@ -10,6 +10,7 @@ public class SimonSaysLogic : MonoBehaviour
     public int currentRound;
     public static ButtonLogic[] buttons = new ButtonLogic[4];
     SpriteExpressions spriteExpressions;
+    [SerializeField] public int startSeed;
     
 
     public void Start(){
@@ -19,7 +20,7 @@ public class SimonSaysLogic : MonoBehaviour
         buttons[1] = GameObject.Find("GreenButton").GetComponent<ButtonLogic>();
         buttons[2] = GameObject.Find("BlueButton").GetComponent<ButtonLogic>();
         buttons[3] = GameObject.Find("YellowButton").GetComponent<ButtonLogic>();
-        initializeGame(42);
+        initializeGame(startSeed);
     }
 
     public void initializeGame(int seed){
