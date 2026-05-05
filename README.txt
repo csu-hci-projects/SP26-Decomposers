@@ -10,3 +10,8 @@ Overleaf Latex: https://www.overleaf.com/read/cqqhfdmzpyvm#1a31cb
 Checkpoint 2:
 Youtube Video of Current State/Code Explanation: https://youtu.be/SFSLkiJRgtM 
 No Paper Provided (Optional)
+
+
+
+Assignment 3:
+Youtube Video: https://youtu.be/R1Fc5sJLLIU 
