@@ -51,7 +51,6 @@ public class SimonSaysLogic : MonoBehaviour
     }
 
     public void doTurn(int button){
-        Debug.Log(button);
         bool isCorrect = button == gameRounds[currentRound];
         manageReaction(isCorrect);
         if (isCorrect) {
@@ -61,6 +60,7 @@ public class SimonSaysLogic : MonoBehaviour
             Invoke("endGame", 2f);
         }
         if (currentRound >= gameRounds.Count){
+            allowedInput = false;
             cheers[Random.Range(0,cheers.Length)].Play();
             newRound();
         }
