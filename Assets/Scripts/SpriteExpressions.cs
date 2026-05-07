@@ -4,7 +4,7 @@ using System.Collections;
 public class SpriteExpressions : MonoBehaviour {
 
 
-    [SerializeField] Sprite[] freakSprites;
+    [SerializeField] public Sprite[] freakSprites;
     [SerializeField] int neutralExpressionIndex = 0;
     [SerializeField] int negativeExpressionIndex = 1;
     [SerializeField] int positiveExpressionIndex = 2;
