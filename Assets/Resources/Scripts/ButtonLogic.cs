@@ -44,12 +44,12 @@ public class ButtonLogic : MonoBehaviour
     }
     public void lightLong() {
         lightUp();
-        Invoke("darken", 0.5f);
+        Invoke("darken", 0.25f);
     }
 
     public void selectLong() {
         select();
-        Invoke("darken", 0.5f);
+        Invoke("darken", 0.25f);
     }
     // Update is called once per frame
     void Update()

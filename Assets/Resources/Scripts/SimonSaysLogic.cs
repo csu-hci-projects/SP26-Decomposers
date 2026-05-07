@@ -10,14 +10,14 @@ public class SimonSaysLogic : MonoBehaviour
     public bool allowedInput;
     public int currentRound;
     public static ButtonLogic[] buttons = new ButtonLogic[4];
-    SpriteExpressions spriteExpressions;
+    SpriteExpressions[] spriteExpressions;
     [SerializeField] public int startSeed;
     
     
 
     public void Start(){
         //Sprite expression stuff
-        spriteExpressions = FindObjectOfType<SpriteExpressions>();
+        spriteExpressions = Resources.FindObjectsOfTypeAll<SpriteExpressions>();
         buttons[0] = GameObject.Find("RedButton").GetComponent<ButtonLogic>();
         buttons[1] = GameObject.Find("GreenButton").GetComponent<ButtonLogic>();
         buttons[2] = GameObject.Find("BlueButton").GetComponent<ButtonLogic>();
@@ -59,21 +59,21 @@ public class SimonSaysLogic : MonoBehaviour
 
     IEnumerator lightHelper(){
         allowedInput = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         for(int i = 0; i < 4; i++) {
             buttons[i].select();
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         for(int i = 0; i < 4; i++) {
             buttons[i].darken();
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         for(int i = 0; i < gameRounds.Count; i++) {
             int light = gameRounds[i];
             buttons[light].lightUp();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.25f);
             buttons[light].darken();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.25f);
         }
         allowedInput = true;
     }
@@ -87,9 +87,13 @@ public class SimonSaysLogic : MonoBehaviour
         if (!allowedInput) 
             return;
         if (isCorrect){
-            spriteExpressions.TriggerPositive();
+            foreach (SpriteExpressions se in spriteExpressions) {
+                se.TriggerPositive();
+            }
         } else {
-            spriteExpressions.TriggerNegative();
+            foreach (SpriteExpressions se in spriteExpressions) {
+                se.TriggerNegative();
+            }
         }
     }
     
