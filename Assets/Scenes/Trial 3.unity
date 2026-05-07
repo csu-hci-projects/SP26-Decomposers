@@ -5135,7 +5135,7 @@ MonoBehaviour:
   started: 0
   allowedInput: 0
   currentRound: 0
-  startSeed: 42
+  startSeed: 99
   cheers:
   - {fileID: 461930092}
   - {fileID: 461930091}
