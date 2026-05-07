@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,8 @@ public class SimonSaysLogic : MonoBehaviour
     public static ButtonLogic[] buttons = new ButtonLogic[4];
     SpriteExpressions[] spriteExpressions;
     [SerializeField] public int startSeed;
+    bool audienceVisible = true;
+    float averageTime = 0f;
     
     
 
@@ -79,6 +82,7 @@ public class SimonSaysLogic : MonoBehaviour
     }
 
     public void endGame(){
+        saveCSV();
         SceneManager.LoadScene("Menu Room");
         return;
     }
@@ -106,5 +110,15 @@ public class SimonSaysLogic : MonoBehaviour
             }
             return _instance;
         }
+    }
+
+    public void saveCSV(){
+        string path = Application.dataPath + "/CsvPrint/Decomposers_Outputfile.csv";
+
+        using (StreamWriter writer = new StreamWriter(path, append: File.Exists(path))){
+            writer.WriteLine($"{gameRounds.Count},{audienceVisible},{averageTime}");
+        }
+
+        Debug.Log("CSV saved to:" + path);
     }
 }
