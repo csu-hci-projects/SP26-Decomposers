@@ -17,7 +17,7 @@ public class SimonSaysLogic : MonoBehaviour
     [SerializeField] public AudioSource[] boos;
     
 
-    bool audienceVisible = false;
+    bool audienceVisible = true;
     float startTime;
     GameObject audience;
     
@@ -57,11 +57,11 @@ public class SimonSaysLogic : MonoBehaviour
             currentRound += 1;
         } else {
             allowedInput = false;
-            //boos[Random.Range(0,boos.Length)].Play();
+            boos[Random.Range(0,boos.Length)].Play();
             Invoke("endGame", 2f);
         }
         if (currentRound >= gameRounds.Count){
-            //cheers[Random.Range(0,cheers.Length)].Play();
+            cheers[Random.Range(0,cheers.Length)].Play();
             newRound();
         }
     }
