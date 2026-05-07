@@ -56,11 +56,11 @@ public class SimonSaysLogic : MonoBehaviour
         if (isCorrect) {
             currentRound += 1;
         } else {
+            allowedInput = false;
             boos[Random.Range(0,boos.Length)].Play();
             Invoke("endGame", 2f);
         }
         if (currentRound >= gameRounds.Count){
-            allowedInput = false;
             cheers[Random.Range(0,cheers.Length)].Play();
             newRound();
         }
