@@ -51,12 +51,12 @@ public class SimonSaysLogic : MonoBehaviour
     }
 
     public void doTurn(int button){
-        Debug.Log(button);
         bool isCorrect = button == gameRounds[currentRound];
         manageReaction(isCorrect);
         if (isCorrect) {
             currentRound += 1;
         } else {
+            allowedInput = false;
             //boos[Random.Range(0,boos.Length)].Play();
             Invoke("endGame", 2f);
         }
