@@ -13,14 +13,20 @@ public class SimonSaysLogic : MonoBehaviour
     public static ButtonLogic[] buttons = new ButtonLogic[4];
     SpriteExpressions[] spriteExpressions;
     [SerializeField] public int startSeed;
+    [SerializeField] public AudioSource[] cheers;
+    [SerializeField] public AudioSource[] boos;
+    
+
     bool audienceVisible = true;
-    float averageTime = 0f;
+    float startTime;
+    GameObject audience;
     
     
 
     public void Start(){
         //Sprite expression stuff
         spriteExpressions = Resources.FindObjectsOfTypeAll<SpriteExpressions>();
+        audience = GameObject.Find("Audience");
         buttons[0] = GameObject.Find("RedButton").GetComponent<ButtonLogic>();
         buttons[1] = GameObject.Find("GreenButton").GetComponent<ButtonLogic>();
         buttons[2] = GameObject.Find("BlueButton").GetComponent<ButtonLogic>();
@@ -31,9 +37,11 @@ public class SimonSaysLogic : MonoBehaviour
     public void initializeGame(int seed){
         Random.InitState(seed);
         gameRounds = new List<int>();
+        audience.SetActive(audienceVisible);
         started = false;
         allowedInput = true;
         currentRound = 0;
+        startTime = Time.time;
     }
 
     public void newRound(){
@@ -49,9 +57,11 @@ public class SimonSaysLogic : MonoBehaviour
         if (isCorrect) {
             currentRound += 1;
         } else {
-            endGame();
+            boos[Random.Range(0,boos.Length)].Play();
+            Invoke("endGame", 2f);
         }
         if (currentRound >= gameRounds.Count){
+            cheers[Random.Range(0,cheers.Length)].Play();
             newRound();
         }
     }
@@ -116,7 +126,8 @@ public class SimonSaysLogic : MonoBehaviour
         string path = Application.dataPath + "/CsvPrint/Decomposers_Outputfile.csv";
 
         using (StreamWriter writer = new StreamWriter(path, append: File.Exists(path))){
-            writer.WriteLine($"{gameRounds.Count},{audienceVisible},{averageTime}");
+            writer.WriteLine("");
+            writer.WriteLine($"{gameRounds.Count},{audienceVisible},{(Time.time - startTime)/gameRounds.Count}");
         }
 
         Debug.Log("CSV saved to:" + path);
