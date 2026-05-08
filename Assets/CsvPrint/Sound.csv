@@ -1,18 +1,18 @@
+participant,rounds,audienceVisible,averageTime
+14,3,False,20.01497
 
-3,False,20.01497
+14,6,False,6.659533
 
-6,False,6.659533
+14,3,False,7.337565
 
-3,False,7.337565
+14,1,False,12.41235
 
-1,False,12.41235
+15,6,True,16.29808
 
-6,True,16.29808
+15,2,False,15.09002
 
-2,False,15.09002
+15,2,False,5.716427
 
-2,False,5.716427
+15,2,False,5.584942
 
-2,False,5.584942
-
-10,False,7.21763
+15,10,False,7.21763
