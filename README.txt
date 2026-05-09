@@ -15,3 +15,10 @@ No Paper Provided (Optional)
 
 Assignment 3:
 Youtube Video: https://youtu.be/R1Fc5sJLLIU 
+
+
+
+Final Submission:
+Short Video:
+Presentation Video:
+Programming Video: https://youtu.be/oa7uNdSjzv8
