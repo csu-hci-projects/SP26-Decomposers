@@ -19,6 +19,11 @@ Youtube Video: https://youtu.be/R1Fc5sJLLIU
 
 
 Final Submission:
-Short Video:
-Presentation Video:
+Short Video: https://youtu.be/_q6jmtLdSDo 
+
+Presentation Video: https://youtu.be/qNF_NBsvA20 
+Slideshow used in Presentation Video: https://docs.google.com/presentation/d/1KdtZj_2aC9ww-aleVTDCb4c2qQQx0KvCnAuuWXsqB0o/edit?usp=sharing 
+
 Programming Video: https://youtu.be/oa7uNdSjzv8
+
+
